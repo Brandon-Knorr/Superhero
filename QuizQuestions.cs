@@ -8,7 +8,7 @@ namespace Superhero
 {
     internal class QuizQuestions
     {
-        public string Text { get; set; }
+        public string Question { get; set; }
 
         public string ImageSource { get; set; }
 
@@ -28,9 +28,9 @@ namespace Superhero
 
         public int FalseSuperman { get; set; }
 
-        public QuizQuestions(string text, string imageSource, int trueSpiderman, int trueWolverine, int trueHulk, int trueSuperman, int falseSpiderman, int falseWolverine, int falseHulk, int falseSuperman)
+        public QuizQuestions(string question, string imageSource, int trueSpiderman, int trueWolverine, int trueHulk, int trueSuperman, int falseSpiderman, int falseWolverine, int falseHulk, int falseSuperman)
         {
-            Text = text;
+            Question = question;
             ImageSource = imageSource;
             TrueSpiderman = trueSpiderman;
             TrueWolverine = trueWolverine;

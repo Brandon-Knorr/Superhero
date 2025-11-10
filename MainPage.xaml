@@ -14,8 +14,9 @@
             <VerticalStackLayout Padding="20">
                 <Label x:Name="QuestionLabel" FontSize="24" Text="Your question here" />
                 <Image x:Name="QuestionImage" HeightRequest="200" />
-                <Button x:Name="TrueButton" Text="True" />
-                <Button x:Name="FalseButton" Text="False" />
+                <Button x:Name="TrueButton" Text="True" Clicked="ButtonClicked"/>
+                <Button x:Name="FalseButton" Text="False" Clicked="ButtonClicked" />
+                <Label x:Name="ResultLabel"/>
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
