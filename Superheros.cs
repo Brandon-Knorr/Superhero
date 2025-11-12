@@ -12,9 +12,9 @@ namespace Superhero
 
         public string ImageSourceName { get; set; }
 
-        public int SuperheroScore { get; set; }
+        public double SuperheroScore { get; set; }
 
-        public Superheros(string name, string imageSourceName, int superheroScore)
+        public Superheros(string name, string imageSourceName, double superheroScore)
         {
             Name = name;
             ImageSourceName = imageSourceName;
