@@ -4,20 +4,33 @@
              x:Class="Superhero.MainPage">
 
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
+        <VerticalStackLayout Padding="20" Spacing="12">
+            <Label x:Name="QuestionLabel"
+          FontSize="18"
+          HorizontalOptions="Center" />
 
-            <Label
-                />
+            <!-- Question image (shows during quiz) -->
+            <Image x:Name="QuestionImage"
+          HeightRequest="240"
+          Aspect="AspectFit"
+          IsVisible="False"
+          HorizontalOptions="Center" />
 
-            <VerticalStackLayout Padding="20">
-                <Label x:Name="QuestionLabel" FontSize="24" Text="Your question here" />
-                <Image x:Name="QuestionImage" HeightRequest="200" />
-                <Button x:Name="TrueButton" Text="True" Clicked="ButtonClicked"/>
+            <!-- Result image (hidden while quizzing, shown at end) -->
+            <Image x:Name="ResultImage"
+          HeightRequest="240"
+          Aspect="AspectFit"
+          IsVisible="False"
+          HorizontalOptions="Center" />
+
+            <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
+                <Button x:Name="TrueButton" Text="True" Clicked="ButtonClicked" />
                 <Button x:Name="FalseButton" Text="False" Clicked="ButtonClicked" />
-                <Label x:Name="ResultLabel"/>
-            </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+            <Label x:Name="ResultLabel"
+          FontSize="16"
+          HorizontalOptions="Center" />
         </VerticalStackLayout>
     </ScrollView>
 
