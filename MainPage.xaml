@@ -14,7 +14,9 @@
           HeightRequest="240"
           Aspect="AspectFit"
           IsVisible="False"
-          HorizontalOptions="Center" />
+          HorizontalOptions="Center">
+                <Image.GestureRecognizers>                    <SwipeGestureRecognizer Direction="Left" Swiped="OnSwiped"/>                    <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped"/>                    <SwipeGestureRecognizer Direction="Up" Swiped="OnSwiped"/>                    <SwipeGestureRecognizer Direction="Down" Swiped="OnSwiped"/>                </Image.GestureRecognizers>
+            </Image>
 
             <!-- Result image (hidden while quizzing, shown at end) -->
             <Image x:Name="ResultImage"
@@ -22,11 +24,6 @@
           Aspect="AspectFit"
           IsVisible="False"
           HorizontalOptions="Center" />
-
-            <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
-                <Button x:Name="TrueButton" Text="True" Clicked="ButtonClicked" />
-                <Button x:Name="FalseButton" Text="False" Clicked="ButtonClicked" />
-            </HorizontalStackLayout>
 
             <Label x:Name="ResultLabel"
           FontSize="16"

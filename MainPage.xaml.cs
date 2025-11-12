@@ -1,4 +1,6 @@
-﻿namespace Superhero
+﻿using Microsoft.Maui.Controls;
+
+namespace Superhero
 {
     public partial class MainPage : ContentPage
     {
@@ -65,7 +67,7 @@
         {
             // hide question UI
             QuestionImage.IsVisible = false;
-            TrueButton.IsVisible = FalseButton.IsVisible = false;
+            QuestionLabel.Text = "";
 
             // show winning hero image
             if (!string.IsNullOrWhiteSpace(winner.ImageSourceName))
@@ -81,12 +83,8 @@
             ResultLabel.Text = $"You are most like {winner.Name}!";
         }
 
-        private void ButtonClicked(object? sender, EventArgs e)
+        public void SwipedTrue()
         {
-
-            if (sender is not Button btn)
-                return;
-
             int currentIndex = Math.Max(0, questionCount - 1);
 
 
@@ -97,19 +95,47 @@
 
             var question = questionList[currentIndex];
 
-            if (btn.Text == "True")
+            superheroList[0].SuperheroScore += question.TrueSpiderman;
+            superheroList[1].SuperheroScore += question.TrueWolverine;
+            superheroList[2].SuperheroScore += question.TrueHulk;
+            superheroList[3].SuperheroScore += question.TrueSuperman;
+        }
+
+        public void SwipedFalse()
+        {
+            int currentIndex = Math.Max(0, questionCount - 1);
+
+
+            if (currentIndex >= questionList.Count)
             {
-                superheroList[0].SuperheroScore += question.TrueSpiderman;
-                superheroList[1].SuperheroScore += question.TrueWolverine;
-                superheroList[2].SuperheroScore += question.TrueHulk;
-                superheroList[3].SuperheroScore += question.TrueSuperman;
+                currentIndex = questionList.Count - 1;
             }
-            else
+
+            var question = questionList[currentIndex];
+
+            superheroList[0].SuperheroScore += question.FalseSpiderman;
+            superheroList[1].SuperheroScore += question.FalseWolverine;
+            superheroList[2].SuperheroScore += question.FalseHulk;
+            superheroList[3].SuperheroScore += question.FalseSuperman;
+        }
+
+        void OnSwiped(object sender, SwipedEventArgs e)
+        { 
+
+            switch (e.Direction)
             {
-                superheroList[0].SuperheroScore += question.FalseSpiderman;
-                superheroList[1].SuperheroScore += question.FalseWolverine;
-                superheroList[2].SuperheroScore += question.FalseHulk;
-                superheroList[3].SuperheroScore += question.FalseSuperman;
+                case SwipeDirection.Left:
+                    SwipedFalse();
+                    break;
+                case SwipeDirection.Right:
+                    SwipedTrue();
+                    break;
+                case SwipeDirection.Up:
+                    SwipedTrue();
+                    break;
+                case SwipeDirection.Down:
+                    SwipedFalse();
+                    break;
             }
 
             if (questionCount < questionList.Count)
@@ -118,15 +144,12 @@
             }
             else
             {
-                TrueButton.IsVisible = FalseButton.IsVisible = false;
+               
                 var maxScore = superheroList.Max(s => s.SuperheroScore);
 
                 var winner = superheroList.OrderByDescending(s => s.SuperheroScore).First();
                 ShowResult(winner);
             }
         }
-
-    
     }
-
 }
